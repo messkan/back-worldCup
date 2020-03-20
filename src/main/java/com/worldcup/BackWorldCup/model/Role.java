@@ -20,7 +20,7 @@ public class Role {
 	
 	@Enumerated(EnumType.STRING)
 	@NotBlank
-	private RoleName role;
+	private RoleName name;
 
 
 	public Long getId() {
@@ -33,15 +33,16 @@ public class Role {
 	}
 
 
-	public RoleName getRole() {
-		return role;
+	public RoleName getName() {
+		return name;
 	}
 
 
-	public void setRole(RoleName role) {
-		this.role = role;
-	} 
-	
+	public void setName(RoleName name) {
+		this.name = name;
+	}
+
+
 	
 	
 }
