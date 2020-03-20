@@ -86,10 +86,14 @@ public class AuthController {
                     HttpStatus.BAD_REQUEST);
         }
         System.out.println(userRequest.getPassword());
+
+
         
         User user = new User();
         user.setEmail(userRequest.getEmail());
 
+        user.setFirstName(userRequest.getFirstName());
+        user.setLastName(userRequest.getLastName());
    
                                                              
         Role userRole = roleRepository.findByName(RoleName.valueOf(userRequest.getRole()))
