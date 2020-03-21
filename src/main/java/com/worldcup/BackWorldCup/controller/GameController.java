@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.worldcup.BackWorldCup.model.Game;
+import com.worldcup.BackWorldCup.payload.GameRequest;
 import com.worldcup.BackWorldCup.service.GameService;;;
 
 @RestController
@@ -41,14 +42,39 @@ public class GameController {
 	
 	
 	@PostMapping
-	public Game save(@RequestBody Game Game) {
-		return gameService.saveGame(Game);
+	public Game save(@RequestBody GameRequest gameRequest) {
+		
+		Game game = new Game();
+		game.setDate(gameRequest.getDate());
+		game.setStadium(gameRequest.getStadium());
+		game.setScore(gameRequest.getScore());
+		game.setAwayTeam(gameRequest.getAwayTeam());
+		game.setHomeTeam(gameRequest.getHomeTeam());
+		
+		return gameService.saveGame(game);
 		
 	}
 	
-	@PutMapping
-	public Game update(@RequestBody Game Game) {
-		return gameService.updateGame(Game);
+	@PutMapping("/{id}")
+	public Game update(@RequestBody GameRequest gameRequest, @PathVariable Integer id) {
+		
+		Optional<Game> exisGame = gameService.getGame(id);
+		
+		if (exisGame.isPresent()) {
+			Game game = new Game();
+			game.setId(id);
+			game.setDate(gameRequest.getDate());
+			game.setStadium(gameRequest.getStadium());
+			game.setScore(gameRequest.getScore());
+			game.setAwayTeam(gameRequest.getAwayTeam());
+			game.setHomeTeam(gameRequest.getHomeTeam());
+			return gameService.updateGame(game);
+		}
+		else {
+			throw new RuntimeException("Le match avec cet id n'existe pas " + id);
+		}
+		
+		
 	}
 
 	@DeleteMapping("/{id}")

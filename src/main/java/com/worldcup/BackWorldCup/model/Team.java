@@ -25,13 +25,13 @@ public class Team {
 	private String name;
 	
 	@Column
-	private Integer wins;
+	private int wins;
 	
 	@Column
-	private Integer draws;
+	private int draws;
 	
 	@Column
-	private Integer loses;
+	private int loses;
 	
 	@OneToMany(mappedBy = "homeTeam",  cascade = CascadeType.ALL)
 	private Set<Game> homeGames;
@@ -61,32 +61,32 @@ public class Team {
 	}
 
 
-	public Integer getWins() {
+	public int getWins() {
 		return wins;
 	}
 
 
-	public void setWins(Integer wins) {
+	public void setWins(int wins) {
 		this.wins = wins;
 	}
 
 
-	public Integer getDraws() {
+	public int getDraws() {
 		return draws;
 	}
 
 
-	public void setDraws(Integer draws) {
+	public void setDraws(int draws) {
 		this.draws = draws;
 	}
 
 
-	public Integer getLoses() {
+	public int getLoses() {
 		return loses;
 	}
 
 
-	public void setLoses(Integer loses) {
+	public void setLoses(int loses) {
 		this.loses = loses;
 	}
 

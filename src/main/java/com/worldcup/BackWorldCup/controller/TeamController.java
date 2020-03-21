@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.worldcup.BackWorldCup.model.Team;
+import com.worldcup.BackWorldCup.payload.TeamRequest;
 import com.worldcup.BackWorldCup.service.TeamService;
 
 import java.util.List;
@@ -42,14 +43,36 @@ public class TeamController {
 	
 	
 	@PostMapping
-	public Team save(@RequestBody Team team) {
+	public Team save(@RequestBody TeamRequest teamRequest) {
+		
+		Team team = new Team();
+		team.setName(teamRequest.getName());
+		team.setWins(teamRequest.getWins());
+		team.setDraws(teamRequest.getDraws());
+		team.setLoses(teamRequest.getLoses());
 		return teamService.saveTeam(team);
 		
 	}
 	
-	@PutMapping
-	public Team update(@RequestBody Team team) {
-		return teamService.updateTeam(team);
+	@PutMapping("/{id}")
+	public Team update(@RequestBody TeamRequest teamRequest, @PathVariable Integer id) {
+		
+		Optional<Team> exisTeam = teamService.getTeam(id);
+		
+		if (exisTeam.isPresent()) {
+			Team team = new Team();
+			team.setId(id);
+			team.setName(teamRequest.getName());
+			team.setWins(teamRequest.getWins());
+			team.setDraws(teamRequest.getDraws());
+			team.setLoses(teamRequest.getLoses());
+			return teamService.updateTeam(team);
+		}
+		else {
+			throw new RuntimeException("L'equipe avec cet id n'existe pas " + id);
+		}
+		
+		
 	}
 
 	@DeleteMapping("/{id}")
