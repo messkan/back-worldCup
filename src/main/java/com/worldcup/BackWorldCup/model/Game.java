@@ -24,6 +24,17 @@ public class Game {
 	private String date;
 	
 	@Column
+	private String score;
+	
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
+	}
+
+	@Column
 	private String stadium;
 	
 	@ManyToOne(optional = false)
