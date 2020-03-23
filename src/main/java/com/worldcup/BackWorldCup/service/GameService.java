@@ -7,7 +7,7 @@ import com.worldcup.BackWorldCup.model.Game;
 
 public interface GameService {
 
-Optional<Game> getGame(Integer id);
+    Optional<Game> getGame(Long id);
 	
 	List<Game> getAllGames();
 	
@@ -15,5 +15,5 @@ Optional<Game> getGame(Integer id);
 	
 	Game updateGame(Game game);
 
-	void deleteGame(Integer id);
+	void deleteGame(Long id);
 }

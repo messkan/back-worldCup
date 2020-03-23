@@ -8,6 +8,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -18,13 +19,17 @@ public class Game {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Integer id;
+	private Long id;
 		
 	@Column
 	private String date;
 	
 	@Column
 	private String score;
+	
+	@NotNull
+	@Column
+	private Double price; 
 	
 	public String getScore() {
 		return score;
@@ -47,12 +52,12 @@ public class Game {
  	@JsonIgnore
 	private Team awayTeam;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
-		this.id = id;
+	public void setId(Long id2) {
+		this.id = id2;
 	}
 
 	public String getDate() {
@@ -85,6 +90,14 @@ public class Game {
 
 	public void setAwayTeam(Team awayTeam) {
 		this.awayTeam = awayTeam;
+	}
+
+	public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
 	}
 	
 	

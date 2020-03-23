@@ -29,7 +29,7 @@ public class GameController {
 	}
 	
 	@GetMapping("/{id}")
-	public Optional<Game> getGame(@PathVariable Integer id){
+	public Optional<Game> getGame(@PathVariable Long id){
 		Optional<Game> Game = gameService.getGame(id);
 		
 		if (Game.isPresent()) {
@@ -56,7 +56,7 @@ public class GameController {
 	}
 	
 	@PutMapping("/{id}")
-	public Game update(@RequestBody GameRequest gameRequest, @PathVariable Integer id) {
+	public Game update(@RequestBody GameRequest gameRequest, @PathVariable Long id) {
 		
 		Optional<Game> exisGame = gameService.getGame(id);
 		
@@ -78,7 +78,7 @@ public class GameController {
 	}
 
 	@DeleteMapping("/{id}")
-	public void delete(@PathVariable Integer id) {
+	public void delete(@PathVariable Long id) {
 		gameService.deleteGame(id);
 	}
 }

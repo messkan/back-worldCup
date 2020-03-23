@@ -3,6 +3,7 @@ package com.worldcup.BackWorldCup.payload;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
@@ -25,6 +26,9 @@ public class UserRequest {
 	  @NotBlank
 	  @Size(max = 100)
 	  private String firstName;
+	  
+	  @NotNull
+	  private Double amount;
 	  
 	  public String getFirstName() {
 		return firstName;
@@ -83,6 +87,16 @@ public class UserRequest {
 
 	public void setRole(String role) {
 		this.role = role;
+	}
+
+
+	public Double getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
 	}
 	  
 	  
