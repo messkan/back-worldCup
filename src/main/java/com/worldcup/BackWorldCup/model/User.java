@@ -10,10 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.GenerationType;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import com.worldcup.BackWorldCup.model.Role;
 
@@ -49,6 +51,20 @@ public class User {
 	@JsonIgnore
 	@Size(max= 100)
 	private String password;
+	
+	
+	@NotNull
+	private Double amount ;
+	
+	
+	@ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "user_games" , 
+        joinColumns = @JoinColumn(name="user_id"),
+        inverseJoinColumns = @JoinColumn(name="game_id")
+    		)
+	private Set<Game> games; 
+	
+	
 	
 	@ManyToMany(fetch = FetchType.LAZY)
 	@JoinTable(name = "user_roles",
@@ -118,7 +134,33 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+
+	public Double getAmount() {
+		return amount;
+	}
+
+
+	public void setAmount(Double amount) {
+		this.amount = amount;
+	}
+
+
+	public Set<Game> getGames() {
+		return games;
+	}
+	
+	public void addGame(Game game) {
+		this.games.add(game);
+	}
+
+
+	public void setGames(Set<Game> games) {
+		this.games = games;
 	} 
+	
+	
 	
 	
 	

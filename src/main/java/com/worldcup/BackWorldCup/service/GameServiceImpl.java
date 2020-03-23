@@ -16,7 +16,7 @@ public class GameServiceImpl implements GameService {
 	private GameRepository gameRepository;
 
 	@Override
-	public Optional<Game> getGame(Integer id) {
+	public Optional<Game> getGame(Long id) {
 		// TODO Auto-generated method stub
 		return gameRepository.findById(id);
 	}
@@ -41,10 +41,12 @@ public class GameServiceImpl implements GameService {
 	}
 
 	@Override
-	public void deleteGame(Integer id) {
+	public void deleteGame(Long id) {
 		// TODO Auto-generated method stub
 		gameRepository.deleteById(id);
 
 	}
+
+	
 
 }
