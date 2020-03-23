@@ -22,6 +22,34 @@ public class UserRequest {
 	  @Size(max = 100)
 	  private String password;
 	  
+	  @NotBlank
+	  @Size(max = 100)
+	  private String firstName;
+	  
+	  public String getFirstName() {
+		return firstName;
+	}
+
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+
+	public String getLastName() {
+		return lastName;
+	}
+
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+
+	@NotBlank
+	  @Size(max = 100)
+	  private String lastName;
+	  
 	  
 	  private String role;
 
