@@ -31,7 +31,7 @@ public class ReserveController {
 	GameServiceImpl gameService;
 	
 	// id game
-	@PostMapping("/id")
+	@PostMapping("/{id}")
 	public ResponseEntity reserveGame(@PathVariable Long id) {
 		 
 		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
