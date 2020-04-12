@@ -48,6 +48,7 @@ public class GameController {
 		game.setDate(gameRequest.getDate());
 		game.setStadium(gameRequest.getStadium());
 		game.setScore(gameRequest.getScore());
+		game.setPrice(gameRequest.getPrice());
 		game.setAwayTeam(gameRequest.getAwayTeam());
 		game.setHomeTeam(gameRequest.getHomeTeam());
 		
@@ -58,16 +59,20 @@ public class GameController {
 	@PutMapping("/{id}")
 	public Game update(@RequestBody GameRequest gameRequest, @PathVariable Long id) {
 		
-		Optional<Game> exisGame = gameService.getGame(id);
+		Optional<Game> optionalGame = gameService.getGame(id);
 		
-		if (exisGame.isPresent()) {
+		
+		if (optionalGame.isPresent()) {
+			Game exisGame = optionalGame.get();
+
 			Game game = new Game();
 			game.setId(id);
 			game.setDate(gameRequest.getDate());
 			game.setStadium(gameRequest.getStadium());
 			game.setScore(gameRequest.getScore());
-			game.setAwayTeam(gameRequest.getAwayTeam());
-			game.setHomeTeam(gameRequest.getHomeTeam());
+			game.setPrice(gameRequest.getPrice());
+			game.setAwayTeam(exisGame.getAwayTeam());
+			game.setHomeTeam(exisGame.getHomeTeam());
 			return gameService.updateGame(game);
 		}
 		else {

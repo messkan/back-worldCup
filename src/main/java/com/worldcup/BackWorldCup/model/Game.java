@@ -27,17 +27,10 @@ public class Game {
 	@Column
 	private String score;
 	
-	@NotNull
 	@Column
 	private Double price; 
 	
-	public String getScore() {
-		return score;
-	}
-
-	public void setScore(String score) {
-		this.score = score;
-	}
+	
 
 	@Column
 	private String stadium;
@@ -46,7 +39,7 @@ public class Game {
 	@JoinColumn(name = "home_team_id", referencedColumnName = "team_id")
  	@JsonIgnore
 	private Team homeTeam;
-
+	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "away_team_id", referencedColumnName = "team_id")
  	@JsonIgnore
@@ -98,6 +91,14 @@ public class Game {
 
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+	
+	public String getScore() {
+		return score;
+	}
+
+	public void setScore(String score) {
+		this.score = score;
 	}
 	
 	

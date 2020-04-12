@@ -1,6 +1,5 @@
 package com.worldcup.BackWorldCup.payload;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
@@ -18,6 +17,10 @@ public class GameRequest {
 	 private String score;
 	 
 	 @NotBlank
+	 @Size(max = 40)
+	 private Double price;
+	 
+	@NotBlank
 	  @Size(max = 100)
 	  private String stadium;
 	  
@@ -70,7 +73,13 @@ public class GameRequest {
 		this.awayTeam = awayTeam;
 	}
 
-	
+	 public Double getPrice() {
+		return price;
+	}
+
+	public void setPrice(Double price) {
+		this.price = price;
+	}
 
 	
 }

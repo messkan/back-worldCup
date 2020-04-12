@@ -12,9 +12,10 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 
+
 @Entity
 @Table(name = "teams")
-public class Team {
+public class Team  {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
