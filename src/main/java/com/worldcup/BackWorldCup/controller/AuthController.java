@@ -95,6 +95,8 @@ public class AuthController {
 
         user.setFirstName(userRequest.getFirstName());
         user.setLastName(userRequest.getLastName());
+        user.setAmount(userRequest.getAmount());
+
    
                                                              
         Role userRole = roleRepository.findByName(RoleName.valueOf(userRequest.getRole()))
