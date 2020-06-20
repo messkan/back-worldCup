@@ -34,12 +34,26 @@ public class Team  {
 	@Column
 	private int loses;
 	
+	@Column
+	private String flag; 
+	
 	@OneToMany(mappedBy = "homeTeam",  cascade = CascadeType.ALL)
 	private Set<Game> homeGames;
 
 
 	@OneToMany(mappedBy = "awayTeam" ,cascade = CascadeType.ALL)
 	private Set<Game> awayGames;
+
+	
+
+	public String getFlag() {
+		return flag;
+	}
+
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 
 
 	public Integer getId() {
