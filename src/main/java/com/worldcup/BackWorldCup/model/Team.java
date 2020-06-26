@@ -11,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 
 @Entity
@@ -38,10 +40,12 @@ public class Team  {
 	private String flag; 
 	
 	@OneToMany(mappedBy = "homeTeam",  cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Game> homeGames;
 
 
 	@OneToMany(mappedBy = "awayTeam" ,cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Game> awayGames;
 
 	
