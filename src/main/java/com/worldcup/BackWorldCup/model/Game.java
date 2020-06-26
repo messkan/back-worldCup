@@ -37,13 +37,11 @@ public class Game {
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "home_team_id", referencedColumnName = "team_id")
- 	@JsonIgnore
-	private Team homeTeam;
+ 	private Team homeTeam;
 	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "away_team_id", referencedColumnName = "team_id")
- 	@JsonIgnore
-	private Team awayTeam;
+ 	private Team awayTeam;
 
 	public Long getId() {
 		return id;
