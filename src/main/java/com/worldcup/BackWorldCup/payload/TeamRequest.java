@@ -21,6 +21,12 @@ public class TeamRequest {
 	  @NotBlank
 	  @Size(max = 100)
 	  private int loses;
+	  
+	  @NotBlank
+	  @Size(max = 100)
+	  private String flag;
+	  
+	  
 
 	public String getName() {
 		return name;
@@ -53,7 +59,16 @@ public class TeamRequest {
 	public void setLoses(int loses) {
 		this.loses = loses;
 	}
+
+	public String getFlag() {
+		return flag;
+	}
+
+	public void setFlag(String flag) {
+		this.flag = flag;
+	}
 	  
+	
 
 
 }

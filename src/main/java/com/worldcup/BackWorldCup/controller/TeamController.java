@@ -50,6 +50,7 @@ public class TeamController {
 		team.setWins(teamRequest.getWins());
 		team.setDraws(teamRequest.getDraws());
 		team.setLoses(teamRequest.getLoses());
+		team.setFlag(teamRequest.getFlag());
 		return teamService.saveTeam(team);
 		
 	}

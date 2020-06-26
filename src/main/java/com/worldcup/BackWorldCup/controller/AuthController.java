@@ -71,7 +71,7 @@ public class AuthController {
         Collection<? extends GrantedAuthority> roles = authentication.getAuthorities(); 
        
         
-        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt , roles ));
+        return ResponseEntity.ok(new JwtAuthenticationResponse(jwt , roles));
     }
     
     
